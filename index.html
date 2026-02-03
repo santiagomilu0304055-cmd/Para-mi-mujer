@@ -1,209 +1,327 @@
 <!DOCTYPE html>
-<html lang="es">
-<head>
-<meta charset="UTF-8">
-<title>Para ti 💌</title>
 
-<style>
-body{
-  margin:0;
-  min-height:100vh;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  background:linear-gradient(135deg,#ffd6e8,#ffeef6);
-  font-family:Arial, sans-serif;
+<html lang="es"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Para mi mona perica 💖</title><style>
+  
+body {
+  
+  margin: 0;
+  
+  height: 100vh;
+  
+  background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+  
+  display: flex;
+  
+  justify-content: center;
+  
+  align-items: center;
+  
+  font-family: 'Segoe UI', sans-serif;
+  
+  overflow: hidden;
+  
+  flex-direction: column;
+  
+  text-align: center;
+  
 }
+  
 
-.contenedor{
-  display:flex;
-  gap:30px;
-  align-items:center;
-  flex-wrap:wrap;
+  
+/* MENSAJITO */
+  
+.hint {
+  
+  color: #fff;
+  
+  font-size: 1.1em;
+  
+  margin-bottom: 15px;
+  
+  animation: parpadeo 2s infinite;
+  
 }
+  
 
-/* VIDEO */
-#snoopyVideo{
-  width:200px;
-  border-radius:18px;
-  box-shadow:0 10px 25px rgba(0,0,0,.2);
+  
+@keyframes parpadeo {
+  
+  0%,100% { opacity: 1; }
+  
+  50% { opacity: 0.5; }
+  
 }
+  
 
-/* SOBRE */
-.sobreBox{
-  text-align:center;
-  cursor:pointer;
+  
+/* GRANADILLA */
+  
+.envelope {
+  
+  width: 200px;
+  
+  height: 200px;
+  
+  background: radial-gradient(circle at 30% 30%, #ffcf7a, #e98b1f);
+  
+  border-radius: 50%;
+  
+  display: flex;
+  
+  justify-content: center;
+  
+  align-items: center;
+  
+  cursor: pointer;
+  
+  position: relative;
+  
+  animation: latir 1.5s infinite;
+  
+  box-shadow: 0 15px 30px rgba(0,0,0,0.25);
+  
 }
+  
 
-.textoArriba{
-  font-size:16px;
-  color:#ff4d88;
-  margin-bottom:10px;
-  animation:flotar 1.5s infinite alternate;
+  
+.envelope::before {
+  
+  content: "";
+  
+  position: absolute;
+  
+  top: -28px;
+  
+  width: 12px;
+  
+  height: 35px;
+  
+  background: linear-gradient(#6b8e23, #3e5f1c);
+  
+  border-radius: 6px;
+  
 }
+  
 
-@keyframes flotar{
-  from{transform:translateY(0);}
-  to{transform:translateY(-6px);}
+  
+.envelope::after {
+  
+  content: "💖";
+  
+  font-size: 45px;
+  
 }
+  
 
-.sobre{
-  width:220px;
-  height:150px;
-  background:#ffb3c7;
-  border-radius:12px;
-  position:relative;
-  overflow:hidden;
-  box-shadow:0 10px 25px rgba(0,0,0,.2);
+  
+@keyframes latir {
+  
+  0%,100% { transform: scale(1); }
+  
+  50% { transform: scale(1.08); }
+  
 }
+  
 
-.tapa{
-  position:absolute;
-  top:0;
-  left:0;
-  width:100%;
-  height:100%;
-  background:#ff8fb1;
-  clip-path:polygon(0 0,100% 0,50% 60%);
-  transition:.6s;
-  z-index:3;
+  
+/* CARTA */
+  
+.card {
+  
+  display: none;
+  
+  background: rgba(255,255,255,0.95);
+  
+  border-radius: 25px;
+  
+  padding: 30px;
+  
+  max-width: 360px;
+  
+  animation: salir 1.5s ease forwards;
+  
 }
+  
 
-.carta{
-  position:absolute;
-  bottom:-120px;
-  left:50%;
-  transform:translateX(-50%);
-  width:180px;
-  height:120px;
-  background:white;
-  border-radius:10px;
-  padding:10px;
-  box-sizing:border-box;
-  transition:.8s;
-  z-index:2;
-  font-size:12px;
-  color:#444;
+  
+@keyframes salir {
+  
+  from { opacity: 0; transform: translateY(40px) scale(0.8); }
+  
+  to { opacity: 1; transform: translateY(0) scale(1); }
+  
 }
+  
 
-/* ABIERTO */
-
-.sobreBox.abierto .carta{
-  bottom:15px;
+  
+h1 {
+  
+  color: #e63946;
+  
 }
+  
 
-.sobreBox.abierto .tapa{
-  transform:rotateX(180deg);
-  transform-origin:top;
+  
+.nombre {
+  
+  font-size: 1.4em;
+  
+  color: #ff4d6d;
+  
+  animation: aparecer 2s ease;
+  
 }
+  
 
-/* CARTA GRANDE */
-
-.pantallaCarta{
-  position:fixed;
-  inset:0;
-  background:rgba(0,0,0,.4);
-  display:none;
-  justify-content:center;
-  align-items:center;
-  z-index:10;
+  
+@keyframes aparecer {
+  
+  from { opacity: 0; }
+  
+  to { opacity: 1; }
+  
 }
+  
 
-.tarjeta{
-  background:white;
-  border-radius:18px;
-  max-width:320px;
-  padding:22px;
-  text-align:center;
-  animation:zoom .4s;
+  
+p {
+  
+  color: #333;
+  
+  font-size: 1.05em;
+  
+  line-height: 1.5;
+  
 }
+  
 
-@keyframes zoom{
-  from{transform:scale(.7);}
-  to{transform:scale(1);}
+  
+/* CORAZONES */
+  
+.heart {
+  
+  position: absolute;
+  
+  color: red;
+  
+  font-size: 20px;
+  
+  animation: flotar 6s infinite;
+  
 }
+  
 
-.tarjeta h2{
-  color:#ff4d88;
-  margin-top:0;
+  
+/* BRILLITOS */
+  
+.sparkle {
+  
+  position: absolute;
+  
+  color: white;
+  
+  font-size: 12px;
+  
+  animation: flotar 5s infinite;
+  
 }
+  
 
-.cerrar{
-  margin-top:15px;
-  background:#ff4d88;
-  border:none;
-  color:white;
-  padding:8px 16px;
-  border-radius:10px;
+  
+@keyframes flotar {
+  
+  0% { transform: translateY(0); opacity: 1; }
+  
+  100% { transform: translateY(-100vh); opacity: 0; }
+  
 }
-</style>
-</head>
+  
+</style></head><body><div class="hint">Tócame… tengo algo para ti 💕</div><div class="envelope" onclick="abrirCarta()"></div><div class="card" id="carta">
 
-<body>
+  <h1>¿Puedo ser tu San Valentín? 💘</h1>
 
-<div class="contenedor">
+  <div class="nombre">Para ti, mi mona perica 😏💖</div>
 
-  <!-- VIDEO SNOOPY -->
-  <video id="snoopyVideo" autoplay muted loop playsinline>
-    <source src="b274c3c6d15129d4ffa60bfc27bcaf7d.mp4" type="video/mp4">
-  </video>
+  <p>Mi mona perica hermosa,<br><br>
 
-  <!-- SOBRE -->
-  <div class="sobreBox" id="sobre">
-    <div class="textoArriba">Tócame, tengo algo para ti 💌</div>
+Desde que llegaste a mi vida todo se siente más bonito.
 
-    <div class="sobre">
-      <div class="tapa"></div>
-      <div class="carta">
-        Para ti… 💗
-      </div>
-    </div>
-  </div>
+Me haces sonreír sin darme cuenta, me das calma,
 
-</div>
+alegría y un cariño que no sabía que necesitaba.<br><br>
 
 
-<!-- CARTA FINAL -->
 
-<div class="pantallaCarta" id="pantalla">
-  <div class="tarjeta">
-    <h2>¿Quieres ser mi San Valentín? 💘</h2>
+Eres luz, eres ternura y eres esa persona
 
-    <p>
-      No es una carta perfecta,
+que hace que los días normales se sientan especiales.
+
+Gracias por existir, por ser tú,
+
+y por hacerme sentir tan bonito el corazón 
+
+T amo mis ojitos magníficos 🩶🌕 💕<br><br>
+
+
+
+Te quiero hoy, mañana y siempre 🌷👸🏼
+    No es una carta perfecta,
       pero es sincera.
       Pensé en ti mientras hacía esto,
       porque me importas más de lo que imaginas.
-    </p>
 
-    <button class="cerrar" onclick="cerrarCarta()">Cerrar</button>
-  </div>
-</div>
-
-
-<script>
-const sobre = document.getElementById("sobre");
-const pantalla = document.getElementById("pantalla");
-
-let abierto = false;
-
-sobre.addEventListener("click", () => {
-
-  if(!abierto){
-    sobre.classList.add("abierto");
-    abierto = true;
-
-    setTimeout(()=>{
-      pantalla.style.display="flex";
-    },800);
-  }
-
-});
-
-function cerrarCarta(){
-  pantalla.style.display="none";
+  </p></div><audio id="musica" loop>  <source src="https://cdn.pixabay.com/audio/2022/03/15/audio_8e8c7f90e3.mp3" type="audio/mpeg"></audio><script>
+  
+function abrirCarta() {
+  
+  document.querySelector(".envelope").style.display = "none";
+  
+  document.querySelector(".hint").style.display = "none";
+  
+  document.getElementById("carta").style.display = "block";
+  
+  document.getElementById("musica").play();
+  
+  setInterval(crearCorazon, 300);
+  
+  setInterval(crearBrillo, 500);
+  
 }
-</script>
+  
 
-</body>
-</html>
+  
+function crearCorazon() {
+  
+  const h = document.createElement("div");
+  
+  h.className = "heart";
+  
+  h.innerHTML = "❤";
+  
+  h.style.left = Math.random() * 100 + "vw";
+  
+  document.body.appendChild(h);
+  
+  setTimeout(() => h.remove(), 6000);
+  
+}
+  
+
+  
+function crearBrillo() {
+  
+  const s = document.createElement("div");
+  
+  s.className = "sparkle";
+  
+  s.innerHTML = "✨";
+  
+  s.style.left = Math.random() * 100 + "vw";
+  
+  document.body.appendChild(s);
+  
+  setTimeout(() => s.remove(), 5000);
+  
+}
+  
+</script></body></html>
