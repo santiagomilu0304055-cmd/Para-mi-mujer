@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+
+<html lang="es"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Para mi mona perica 💖</title><style>
+  
+body {
+  
+  margin: 0;
+  
+  height: 100vh;
+  
+  background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+  
+  display: flex;
+  
+  justify-content: center;
+  
+  align-items: center;
+  
+  font-family: 'Segoe UI', sans-serif;
+  
+  overflow: hidden;
+  
+  flex-direction: column;
+  
+  text-align: center;
+  
+}
+  
+
+  
+/* MENSAJITO */
+  
+.hint {
+  
+  color: #fff;
+  
+  font-size: 1.1em;
+  
+  margin-bottom: 15px;
+  
+  animation: parpadeo 2s infinite;
+  
+}
+  
+
+  
+@keyframes parpadeo {
+  
+  0%,100% { opacity: 1; }
+  
+  50% { opacity: 0.5; }
+  
+}
+  
+
+  
+/* GRANADILLA */
+  
+.envelope {
+  
+  width: 200px;
+  
+  height: 200px;
+  
+  background: radial-gradient(circle at 30% 30%, #ffcf7a, #e98b1f);
+  
+  border-radius: 50%;
+  
+  display: flex;
+  
+  justify-content: center;
+  
+  align-items: center;
+  
+  cursor: pointer;
+  
+  position: relative;
+  
+  animation: latir 1.5s infinite;
+  
+  box-shadow: 0 15px 30px rgba(0,0,0,0.25);
+  
+}
+  
+
+  
+.envelope::before {
+  
+  content: "";
+  
+  position: absolute;
+  
+  top: -28px;
+  
+  width: 12px;
+  
+  height: 35px;
+  
+  background: linear-gradient(#6b8e23, #3e5f1c);
+  
+  border-radius: 6px;
+  
+}
+  
+
+  
+.envelope::after {
+  
+  content: "💖";
+  
+  font-size: 45px;
+  
+}
+  
+
+  
+@keyframes latir {
+  
+  0%,100% { transform: scale(1); }
+  
+  50% { transform: scale(1.08); }
+  
+}
+  
+
+  
+/* CARTA */
+  
+.card {
+  
+  display: none;
+  
+  background: rgba(255,255,255,0.95);
+  
+  border-radius: 25px;
+  
+  padding: 30px;
+  
+  max-width: 360px;
+  
+  animation: salir 1.5s ease forwards;
+  
+}
+  
+
+  
+@keyframes salir {
+  
+  from { opacity: 0; transform: translateY(40px) scale(0.8); }
+  
+  to { opacity: 1; transform: translateY(0) scale(1); }
+  
+}
+  
+
+  
+h1 {
+  
+  color: #e63946;
+  
+}
+  
+
+  
+.nombre {
+  
+  font-size: 1.4em;
+  
+  color: #ff4d6d;
+  
+  animation: aparecer 2s ease;
+  
+}
+  
+
+  
+@keyframes aparecer {
+  
+  from { opacity: 0; }
+  
+  to { opacity: 1; }
+  
+}
+  
+
+  
+p {
+  
+  color: #333;
+  
+  font-size: 1.05em;
+  
+  line-height: 1.5;
+  
+}
+  
+
+  
+/* CORAZONES */
+  
+.heart {
+  
+  position: absolute;
+  
+  color: red;
+  
+  font-size: 20px;
+  
+  animation: flotar 6s infinite;
+  
+}
+  
+
+  
+/* BRILLITOS */
+  
+.sparkle {
+  
+  position: absolute;
+  
+  color: white;
+  
+  font-size: 12px;
+  
+  animation: flotar 5s infinite;
+  
+}
+  
+
+  
+@keyframes flotar {
+  
+  0% { transform: translateY(0); opacity: 1; }
+  
+  100% { transform: translateY(-100vh); opacity: 0; }
+  
+}
+  
+</style></head><body><div class="hint">Tócame… tengo algo para ti 💕</div><div class="envelope" onclick="abrirCarta()"></div><div class="card" id="carta">  <h1>Feliz San Valentín 💘</h1>  <div class="nombre">Para ti, mi mona perica 🥺💖</div>  <p>Mi mona perica hermosa,<br><br>
+
+Desde que llegaste a mi vida todo se siente más bonito.
+
+Me haces sonreír sin darme cuenta, me das calma,
+
+alegría y un cariño que no sabía que necesitaba.<br><br>
+
+
+
+Eres luz, eres ternura y eres esa persona
+
+que hace que los días normales se sientan especiales.
+
+Gracias por existir, por ser tú,
+
+y por hacerme sentir tan bonito el corazón 
+
+T amo mis ojitos magníficos 🩶🌕 💕<br><br>
+
+
+
+Te quiero hoy, mañana y siempre 🌷👸🏼
+
+  </p></div><audio id="musica" loop>  <source src="https://cdn.pixabay.com/audio/2022/03/15/audio_8e8c7f90e3.mp3" type="audio/mpeg"></audio><script>
+  
+function abrirCarta() {
+  
+  document.querySelector(".envelope").style.display = "none";
+  
+  document.querySelector(".hint").style.display = "none";
+  
+  document.getElementById("carta").style.display = "block";
+  
+  document.getElementById("musica").play();
+  
+  setInterval(crearCorazon, 300);
+  
+  setInterval(crearBrillo, 500);
+  
+}
+  
+
+  
+function crearCorazon() {
+  
+  const h = document.createElement("div");
+  
+  h.className = "heart";
+  
+  h.innerHTML = "❤";
+  
+  h.style.left = Math.random() * 100 + "vw";
+  
+  document.body.appendChild(h);
+  
+  setTimeout(() => h.remove(), 6000);
+  
+}
+  
+
+  
+function crearBrillo() {
+  
+  const s = document.createElement("div");
+  
+  s.className = "sparkle";
+  
+  s.innerHTML = "✨";
+  
+  s.style.left = Math.random() * 100 + "vw";
+  
+  document.body.appendChild(s);
+  
+  setTimeout(() => s.remove(), 5000);
+  
+}
+  
+</script></body></html>
