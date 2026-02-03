@@ -33,19 +33,39 @@ animation:parpadeo 1.6s infinite;
 50%{opacity:.4;}
 }
 
-/* SNOOPY */
-#snoopy img{
-width:220px;
+/* =======================
+   PERRITO CON FLORES
+======================= */
+
+.perrito{
 cursor:pointer;
-animation:flotarS 3s ease-in-out infinite;
+display:flex;
+flex-direction:column;
+align-items:center;
+animation:flotar 2.8s ease-in-out infinite;
 }
 
-@keyframes flotarS{
-0%,100%{transform:translateY(0);}
-50%{transform:translateY(-10px);}
+.perrito .cara{
+font-size:110px;
 }
 
-/* GRANADILLA */
+.perrito .flores{
+font-size:55px;
+margin-top:-12px;
+animation:moverRamo .8s ease-in-out infinite;
+transform-origin:center;
+}
+
+@keyframes moverRamo{
+0%{transform:rotate(0deg);}
+50%{transform:rotate(14deg);}
+100%{transform:rotate(0deg);}
+}
+
+/* =======================
+   GRANADILLA
+======================= */
+
 .envelope{
 width:200px;
 height:200px;
@@ -80,23 +100,43 @@ font-size:45px;
 50%{transform:scale(1.08);}
 }
 
-/* SOBRE */
-#sobre img{
+/* =======================
+   SOBRE
+======================= */
+
+.sobre{
 width:260px;
+height:180px;
+background:#ffc2d1;
+border-radius:14px;
+position:relative;
 cursor:pointer;
+box-shadow:0 10px 20px rgba(0,0,0,.2);
+display:flex;
+align-items:center;
+justify-content:center;
 }
 
-/* CARTA */
+.sobre::before{
+content:"💌";
+font-size:60px;
+}
+
+/* =======================
+   CARTA
+======================= */
+
 .card{
 background:rgba(255,255,255,.95);
 border-radius:25px;
-padding:25px;
+padding:22px;
 max-width:360px;
 animation:salir 1.2s ease forwards;
+position:relative;
 }
 
 @keyframes salir{
-from{opacity:0;transform:translateY(50px) scale(.8);}
+from{opacity:0;transform:translateY(60px) scale(.8);}
 to{opacity:1;transform:translateY(0) scale(1);}
 }
 
@@ -105,7 +145,7 @@ h1{color:#e63946;}
 .nombre{
 font-size:1.3em;
 color:#ff4d6d;
-margin-bottom:10px;
+margin-bottom:8px;
 }
 
 p{
@@ -114,7 +154,28 @@ font-size:1.05em;
 line-height:1.5;
 }
 
-/* corazones */
+/* =======================
+   DRAGONA
+======================= */
+
+.dragona{
+position:absolute;
+right:-10px;
+top:-25px;
+font-size:60px;
+animation:volar 2.5s ease-in-out infinite;
+filter:drop-shadow(0 5px 8px rgba(0,0,0,.25));
+}
+
+@keyframes volar{
+0%,100%{transform:translateY(0) translateX(0) rotate(0deg);}
+50%{transform:translateY(-12px) translateX(-6px) rotate(-4deg);}
+}
+
+/* =======================
+   CORAZONES Y BRILLOS
+======================= */
+
 .heart{
 position:absolute;
 color:red;
@@ -139,48 +200,50 @@ to{transform:translateY(-100vh);opacity:0;}
 
 <body>
 
-<!-- TEXTO ARRIBA -->
-<div id="hint1" class="hint">
+<div id="texto" class="hint">
 Tócame… tengo algo para ti 💕
 </div>
 
-<!-- SNOOPY -->
-<div id="snoopy">
-<img src="PEGA_AQUI_LA_IMAGEN_DE_SNOOPY" alt="Snoopy">
+<!-- PERRITO -->
+<div id="perrito" class="perrito">
+  <div class="cara">🐶</div>
+  <div class="flores">💐</div>
 </div>
 
 <!-- GRANADILLA -->
 <div id="granadilla" class="oculto">
-<div class="envelope"></div>
+  <div class="envelope"></div>
 </div>
 
 <!-- SOBRE -->
 <div id="sobre" class="oculto">
-<img src="PEGA_AQUI_LA_IMAGEN_DEL_SOBRE" alt="Sobre">
+  <div class="sobre"></div>
 </div>
 
 <!-- CARTA -->
 <div id="carta" class="oculto card">
 
-<h1>¿Quieres ser mi San Valentín? 💘</h1>
+  <div class="dragona">🐉</div>
 
-<div class="nombre">Para ti, mi mona perica 🥺💖</div>
+  <h1>¿Quieres ser mi San Valentín? 💘</h1>
 
-<p>
-Mi mona perica hermosa,<br><br>
+  <div class="nombre">Para ti, mi mona perica 🥺💖</div>
 
-Desde que llegaste a mi vida todo se siente más bonito.
-Me haces sonreír sin darme cuenta, me das calma,
-alegría y un cariño que no sabía que necesitaba.<br><br>
+  <p>
+  Mi mona perica hermosa,<br><br>
 
-Eres luz, eres ternura y eres esa persona
-que hace que los días normales se sientan especiales.
-Gracias por existir, por ser tú,
-y por hacerme sentir tan bonito el corazón.
-Te amo mis ojitos magníficos 🩶🌕 💕<br><br>
+  Desde que llegaste a mi vida todo se siente más bonito.
+  Me haces sonreír sin darme cuenta, me das calma,
+  alegría y un cariño que no sabía que necesitaba.<br><br>
 
-Te quiero hoy, mañana y siempre 🌷👸🏼
-</p>
+  Eres luz, eres ternura y eres esa persona
+  que hace que los días normales se sientan especiales.
+  Gracias por existir, por ser tú,
+  y por hacerme sentir tan bonito el corazón.
+  Te amo mis ojitos magníficos 🩶🌕 💕<br><br>
+
+  Te quiero hoy, mañana y siempre 🌷👸🏼
+  </p>
 
 </div>
 
@@ -190,46 +253,48 @@ Te quiero hoy, mañana y siempre 🌷👸🏼
 
 <script>
 
-const snoopy = document.getElementById("snoopy");
+const perrito = document.getElementById("perrito");
 const granadilla = document.getElementById("granadilla");
 const sobre = document.getElementById("sobre");
 const carta = document.getElementById("carta");
 const musica = document.getElementById("musica");
 
-snoopy.onclick = () => {
-snoopy.classList.add("oculto");
-granadilla.classList.remove("oculto");
+perrito.onclick = () =>{
+  perrito.classList.add("oculto");
+  granadilla.classList.remove("oculto");
 };
 
-granadilla.onclick = () => {
-granadilla.classList.add("oculto");
-sobre.classList.remove("oculto");
+granadilla.onclick = () =>{
+  granadilla.classList.add("oculto");
+  sobre.classList.remove("oculto");
 };
 
-sobre.onclick = () => {
-sobre.classList.add("oculto");
-carta.classList.remove("oculto");
-musica.play();
-setInterval(crearCorazon,300);
-setInterval(crearBrillo,500);
+sobre.onclick = () =>{
+  sobre.classList.add("oculto");
+  carta.classList.remove("oculto");
+  musica.play();
+  setInterval(crearCorazon,300);
+  setInterval(crearBrillo,500);
 };
 
 function crearCorazon(){
-const h=document.createElement("div");
-h.className="heart";
-h.innerHTML="❤";
-h.style.left=Math.random()*100+"vw";
-document.body.appendChild(h);
-setTimeout(()=>h.remove(),6000);
+  const h=document.createElement("div");
+  h.className="heart";
+  h.innerHTML="❤";
+  h.style.left=Math.random()*100+"vw";
+  h.style.bottom="-20px";
+  document.body.appendChild(h);
+  setTimeout(()=>h.remove(),6000);
 }
 
 function crearBrillo(){
-const s=document.createElement("div");
-s.className="sparkle";
-s.innerHTML="✨";
-s.style.left=Math.random()*100+"vw";
-document.body.appendChild(s);
-setTimeout(()=>s.remove(),5000);
+  const s=document.createElement("div");
+  s.className="sparkle";
+  s.innerHTML="✨";
+  s.style.left=Math.random()*100+"vw";
+  s.style.bottom="-20px";
+  document.body.appendChild(s);
+  setTimeout(()=>s.remove(),5000);
 }
 
 </script>
