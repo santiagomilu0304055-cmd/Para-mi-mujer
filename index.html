@@ -171,19 +171,22 @@ esto puede ser para siempre. 🌷
 </div>
 
 <!-- Música de piano romántica -->
-<audio id="musica" loop>
+<audio id="musica" preload="auto" loop playsinline>
   <source src="https://cdn.pixabay.com/audio/2022/10/30/audio_38cde8f4b5.mp3" type="audio/mpeg">
 </audio>
-
+  
 <script>
 function abrirCarta(){
   document.querySelector(".envelope").style.display="none";
   document.querySelector(".hint").style.display="none";
   document.getElementById("carta").style.display="block";
 
-  const audio=document.getElementById("musica");
-  audio.volume=0.6;
-  audio.play();
+  const audio = document.getElementById("musica");
+  audio.volume = 0.6;
+
+  audio.play().catch(() => {
+    console.log("El navegador bloqueó el audio");
+  });
 
   setInterval(crearCorazon,300);
   setInterval(crearBrillo,500);
